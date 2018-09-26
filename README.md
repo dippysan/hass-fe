@@ -59,7 +59,9 @@ cd hass-fe
 yarn
 quasar build -m pwa
 ```
-Use Apache/NGINX or whatever. The root is your git directory + dist/pwa-mat and the default page is index.html
+You can copy everything from dist/pwa-mat to your home assistant config www directory and hit it with hassURL/local/directory-copied-to (http://localhost:8123/local/hassfe)
+
+Or use Apache/NGINX or whatever. The root is your git directory + dist/pwa-mat and the default page is index.html
 
 # Setup
 HASS needs a custom component 'hassfe_config' for the github configuration. You can juse use a gist token but it is limited in how many api calls you can make. Adding in the username/password will give you a lot more. Usefull if you are making lots of changes. I try to keep the API calls down but you can run out with out the auth information.
