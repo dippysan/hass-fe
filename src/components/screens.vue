@@ -214,8 +214,8 @@ export default {
 
 <style>
 .custom-caption {
-	color: white;
-	text-align: center;
-	mix-blend-mode: difference;
+ color: white;
+ text-align: center;
+ mix-blend-mode: difference;
 }
 </style>

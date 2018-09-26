@@ -178,7 +178,7 @@ export default {
         this.oldColor = this.$rgbToHex(this.entity.attributes.rgb_color)
 
         if (this.color.hex) {
-          this.color = {'hex': this.oldColor, 'rgba': {'r': this.entity.attributes.rgb_color[0], 'g': this.entity.attributes.rgb_color[1], 'g': this.entity.attributes.rgb_color[2], 'a': 1}}
+          this.color = {'hex': this.oldColor, 'rgba': {'r': this.entity.attributes.rgb_color[0], 'g': this.entity.attributes.rgb_color[1], 'b': this.entity.attributes.rgb_color[2], 'a': 1}}
         } else {
           this.color = this.oldColor
         }

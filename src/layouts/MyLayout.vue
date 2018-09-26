@@ -412,6 +412,7 @@ export default {
       }
 
       var temp = this.rotateBackGroundImages.filter(e => e !== slide)
+      this.rotateBackGroundImages = temp
     },
     addToRotate (slide) {
       if (this.rotateBackGroundImages.includes(slide)) {
@@ -623,24 +624,24 @@ export default {
 </style>
 <style>
 .full-text {
-	font-size: 2em;
+ font-size: 2em;
 }
 .weatherImage {
-	width: 64px;
+ width: 64px;
 }
 .bk {
   transition: all 0.1s ease-out;
 }
 @media (max-width: 900px) {
-	.short-text {
-		display: inline-block;
-	}
-	.full-text {
-		font-size: 1.5em;
-	}
+ .short-text {
+ display: inline-block;
+ }
+ .full-text {
+ font-size: 1.5em;
+ }
 
-	.weatherImage {
-		width: 32px;
-	}
+ .weatherImage {
+ width: 32px;
+ }
 }
 </style>

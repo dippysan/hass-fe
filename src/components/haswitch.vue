@@ -129,6 +129,6 @@ export default {
 
 <style>
 .big-icon {
-	font-size: 3rem;
+ font-size: 3rem;
 }
 </style>

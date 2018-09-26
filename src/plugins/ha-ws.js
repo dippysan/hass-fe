@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable node/no-deprecated-api */
+/* eslint-disable no-unmodified-loop-condition */
 import {
   getAuth,
   createConnection,
-  subscribeEntities,
 
   ERR_HASS_HOST_REQUIRED
 } from '../haws.es.js'
