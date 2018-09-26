@@ -11,7 +11,7 @@ I wrote this mainly for a few tables I have around the house that I wanted a nic
 * Auto go to home screen - Check the weather, maybe switched a screen to close a lock, the FE will go back to the home screen for you
 * Configuration - Trying to make everything customizable
 * Simple framework - Quasar/Vue.js can be a little daunting to new users. I tried to make things simple to add in new components. See below on how to extend with more components
-* Helpful entity browser - Hit '\' to see this. Very helpful for developers
+* Helpful entity browser - Hit '\\' to see this. Very helpful for developers
 
 ### Components
 * Camera - Camera thumbnails and videos
@@ -19,6 +19,7 @@ I wrote this mainly for a few tables I have around the house that I wanted a nic
 * Cover - Garage doors
 * Group - Control groups the same as switches
 * Light - On, off, brightness, color
+* Sensor - No controls just shows the friendly name and state
 * Switch - On, off
 * Vacuum - On, Off, Battery Status
 * Weather - Right now it is tied to dark sky
@@ -30,6 +31,7 @@ Just because things are listed does not mean they wont work. If you find other's
 * Cover - MyQ
 * Group - N/A just controlled like switches
 * Light - LIFX
+* Sensor - Just shows state and should work with any sensor
 * Switch - Zwave and others
 * Vacuum - Roomba
 * Weather - Dark Sky
@@ -65,27 +67,31 @@ In your HASS configuration directory you need to add a custom component [Custom 
 
 # Login workflow
 On first login or clearing you application cache in your browswer you will be asked for your home assistant server URL. Mine is accessible from the internet with nginx so i can use a public URL. if you internal to your network enter that URL.
-![login](readmeImg/login.png)
+##Initial Page Load
+<p align="center"><img src="readmeImg/login.png"></p>
 
 You will be presented with your HASS login screen. Enter your credentials
-![login](readmeImg/hass.png)
+##Login
+<p align="center"><img src="readmeImg/hass.png"></p>
 
 If you have configurations already you can choose them from the drop down or type in a new name
-![Choose Config](readmeImg/chooseconfig.png)
+##Choose Config
+<p align="center"><img src="readmeImg/chooseconfig.png"></p>
 
 This config will become the default for this browser/device. This all can be changed from the config menu. Long press the date for this
-![Home Screen](readmeImg/homescreen.png)
+##Home Screen
+<p align="center"><img src="readmeImg/homescreen.png"></p>
 
-Config screen
-![Config Screen](readmeImg/configscreen.png)
+##Config screen
+<p align="center"><img src="readmeImg/configscreen.png"></p>
 
 # Configuration
 In the configuration screen, set edit mode and hit save
-![Empty screen](readmeImg/configempty.png)
+<p align="center"><img src="readmeImg/configempty.png"></p>
 
 The plus '+' adds new components to the screen. The circled plus '+' at the bottom right will allow you to add more screens, remove a screen and make a screen the home. This will be the screen that the return to home function will use.
 
-Most components just work with a click. For ligths long press to change the color/brightness.
+Most components just work with a click. For lights long press to change the color/brightness.
 
 
 Im not the best writer so please bare with these docs/spelling/grammar. If you need further explanation on how this all works just ask. I will be making changes to some visual layouts.
