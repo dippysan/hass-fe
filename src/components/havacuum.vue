@@ -74,6 +74,12 @@ export default {
     }
     this.doUpdate()
   },
+  created () {
+    this.debouncedClick = debounce(async function (message) {
+      this.clickVisible = true
+      await this.$hawsSend(message)
+    }, 1000)
+  },
   methods: {
     doUpdate () {
       this.state = this.$getStateInfo(this.entity)
@@ -114,11 +120,7 @@ export default {
         }
       }
 
-      this.debouncedClick = debounce(async function () {
-        this.clickVisible = true
-        await this.$hawsSend(message)
-      }, 1000)
-      await this.debouncedClick()
+      await this.debouncedClick(message)
     }
   }
 }

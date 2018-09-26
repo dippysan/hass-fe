@@ -78,6 +78,15 @@ export const setEvent = (state, event) => {
         //  console.log('updating groups ' + event.data.entity_id + ' to ' + event.data.new_state.state)
         }
         break
+      case 'binary_sensor':
+        objIndex = state.sensors.findIndex(a => a.entity_id === event.data.entity_id)
+        if (objIndex !== -1) {
+          state.sensors[objIndex].state = event.data.new_state.state
+          state.sensors[objIndex].attributes = event.data.new_state.attributes
+          state.sensors.splice(objIndex, 1, state.sensors[objIndex])
+        //  console.log('updating groups ' + event.data.entity_id + ' to ' + event.data.new_state.state)
+        }
+        break
     }
   }
 }
@@ -183,6 +192,17 @@ export const setEntities = (state, entities) => {
         }
         break
       case 'sensor':
+        if (state.sensors && state.sensors.findIndex(a => a.entity_id === entity.entity_id) !== -1) {
+          let objIndex = state.sensors.findIndex(a => a.entity_id === entity.entity_id)
+          if (JSON.stringify(state.sensors[objIndex]) !== JSON.stringify(entity)) {
+            state.sensors.splice(objIndex, 1, entity)
+            // console.log('updating lights ' + entity.entity_id + ' to ' + entity.state)
+          }
+        } else {
+          state.sensors.push(entity)
+        }
+        break
+      case 'binary_sensor':
         if (state.sensors && state.sensors.findIndex(a => a.entity_id === entity.entity_id) !== -1) {
           let objIndex = state.sensors.findIndex(a => a.entity_id === entity.entity_id)
           if (JSON.stringify(state.sensors[objIndex]) !== JSON.stringify(entity)) {

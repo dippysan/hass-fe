@@ -601,21 +601,49 @@ export default {
       return (zero + num).slice(-digit)
     },
     drawerClose: async function () {
-      this.$q.loading.show({
-        delay: 400, // ms,
-        message: 'Loading configuration names',
-        messageColor: 'blue',
-        spinnerSize: 250, // in pixel
-        customClass: 'bg-primary'
-
-      })
       if (this.configName === this.$config.configName) {
+        this.$q.loading.show({
+          delay: 400, // ms,
+          message: 'Loading configuration names',
+          messageColor: 'blue',
+          spinnerSize: 250, // in pixel
+          customClass: 'bg-primary'
+
+        })
         await this.$configSave()
+        this.configModified(false)
       } else {
-        this.$configCommit('config/configName', this.configName)
-        await this.$configLoad()
+        if (this.configNames.filter(a => a.label === this.configName).length > 0) {
+          var vm = this
+          vm.$q.dialog({
+            title: 'Confirm',
+            message: 'Overwrite ' + vm.configName,
+            ok: 'Yes',
+            cancel: 'No'
+          }).then(async () => {
+            this.$configCommit('config/configName', this.configName)
+            await vm.$configSave()
+            this.configModified(false)
+          }).catch(() => {
+
+          })
+        } else {
+          this.$q.loading.show({
+            delay: 400, // ms,
+            message: 'Loading configuration names',
+            messageColor: 'blue',
+            spinnerSize: 250, // in pixel
+            customClass: 'bg-primary'
+
+          })
+          this.$configCommit('config/configName', this.configName)
+          await this.$configLoad()
+          this.configModified(false)
+        }
       }
-      this.leftDrawerOpen = false
+    },
+    configModified (keepOpen) {
+      this.leftDrawerOpen = keepOpen
       this.doRotateBackground()
       this.$q.loading.hide()
     }

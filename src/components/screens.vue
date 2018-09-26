@@ -20,12 +20,13 @@
                 <cover-view v-if="getType(entity_id) === 'cover'" class="col-3 q-ma-sm" :entityId="entity_id" />
                 <camera-view v-if="getType(entity_id) === 'camera'" class="col-3 q-ma-sm" :entityId="entity_id" />
                 <vacuum-view v-if="getType(entity_id) === 'vacuum'" class="col-3 q-ma-sm" :entityId="entity_id" />
+                <sensor-view v-if="getType(entity_id) === 'sensor'" class="col-3 q-ma-sm" :entityId="entity_id" />
             </div>
         </div>
         <q-btn icon="add" :style="bgs" @click="clicked" color="secondary" style="font-size: 25px" v-if="configEnabled" />
         <q-modal v-model="opened" :content-css="{minWidth: '40vw', minHeight: '20vh'}" @hide="modalClosed" v-close-overlay>
             <q-search ref="searchinput" class="q-ma-lg" v-model="filtered" :autofocus="true" placeholder="Start typing an entity name" :clearable="true" @focus="$event.target.select()" lower-case>
-                <q-autocomplete separator @search="search" />
+                <q-autocomplete separator @search="search" :max-results=250 />
             </q-search>
 
             <q-btn color="primary" @click="opened = false" label="Close" />
@@ -41,6 +42,7 @@ import haclimate from 'components/haclimate.vue'
 import hacover from 'components/hacover.vue'
 import hacamera from 'components/hacamera.vue'
 import havacuum from 'components/havacuum.vue'
+import hasensor from 'components/hasensor.vue'
 
 export default {
   name: 'Group',
@@ -60,7 +62,8 @@ export default {
     'climate-view': haclimate,
     'cover-view': hacover,
     'camera-view': hacamera,
-    'vacuum-view': havacuum
+    'vacuum-view': havacuum,
+    'sensor-view': hasensor
   },
   data () {
     return {
@@ -189,12 +192,12 @@ export default {
         var found = this.$store.state.haws.entities[this.$store.state.config.componentsToDisplay[index]].filter(function (entity) {
           return entity.entity_id.toLowerCase().includes(filtered)
         }
-
         )
+
         for (var f in found) {
           if (!this.hagroup.children.includes(found[f].entity_id)) {
             this.validEntities.push(found[f].entity_id)
-            ret.push({value: found[f].entity_id, label: found[f].entity_id + ' | ' + found[f].attributes.friendly_name})
+            ret.push({value: found[f].entity_id, label: found[f].entity_id + ' | ' + found[f].attributes.friendly_name + ' | ' + found[f].state})
           }
         }
       }

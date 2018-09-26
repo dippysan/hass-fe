@@ -16,7 +16,7 @@ export default {
     }]
   }],
   configEnabled: false,
-  componentsToDisplay: ['camera', 'climate', 'cover', 'group', 'light', 'switch', 'vacuum'],
+  componentsToDisplay: ['camera', 'climate', 'cover', 'group', 'light', 'sensors', 'switch', 'vacuum'],
   tempSensor: 'sensor.dark_sky_temperature',
   currentConditions: 'sensor.dark_sky_summary',
   homeScreenDelay: 10,
