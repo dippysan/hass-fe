@@ -411,8 +411,10 @@ export default {
         return
       }
 
-      var temp = this.rotateBackGroundImages.filter(e => e !== slide)
+      var temp = this.rotateBackGroundImages.filter(e => parseInt(e) !== parseInt(slide))
+
       this.rotateBackGroundImages = temp
+      console.log(this.rotateBackGroundImages)
     },
     addToRotate (slide) {
       if (this.rotateBackGroundImages.includes(slide)) {
@@ -614,6 +616,7 @@ export default {
         await this.$configLoad()
       }
       this.leftDrawerOpen = false
+      this.doRotateBackground()
       this.$q.loading.hide()
     }
   }
