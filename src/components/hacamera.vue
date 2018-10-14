@@ -54,7 +54,9 @@ export default {
     this.bgs = {
       'width': this.buttonWidth * 2 + 'px'
     }
-    this.getImage().then(function (e) { })
+    this.getImage().then(function (e) { }).catch(function (error) {
+      console.log(error)
+    })
   },
   beforeDestroy () {
   },
