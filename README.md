@@ -65,7 +65,7 @@ Or use Apache/NGINX or whatever. The root is your git directory + dist/pwa-mat a
 
 # Setup
 HASS needs a custom component 'hassfe_config' for the github configuration. You can juse use a gist token but it is limited in how many api calls you can make. Adding in the username/password will give you a lot more. Usefull if you are making lots of changes. I try to keep the API calls down but you can run out with out the auth information.
-In your HASS configuration directory you need to add a custom component [Custom Component](https://developers.home-assistant.io/docs/en/creating_component_index.html). Copy the sample hassfe_config.py file into your custom_components directory and make changes as needed. I also hide the config from the UI/Frontends. Check the customize.yaml sample on how to do that. Once you have the component installed, restart HASS
+In your HASS configuration directory you need to add a custom component [Custom Component](https://developers.home-assistant.io/docs/en/creating_component_index.html). Copy the sample hassfe_config.py file into your custom_components directory and make changes as needed. Add 'hassfe_config:' to configuration.yaml. I also hide the config from the UI/Frontends. Check the customize.yaml sample on how to do that. Once you have the component installed, restart HASS
 
 # Login workflow
 On first login or clearing you application cache in your browswer you will be asked for your home assistant server URL. Mine is accessible from the internet with nginx so i can use a public URL. if you internal to your network enter that URL.
